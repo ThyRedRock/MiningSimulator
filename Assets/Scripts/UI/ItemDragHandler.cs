@@ -7,7 +7,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 {
     Transform originalParent;
     CanvasGroup canvasGroup;
-   
 
     void Start()
     {
