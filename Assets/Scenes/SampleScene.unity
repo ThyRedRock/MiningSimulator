@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 634329073}
   slotPrefab: {fileID: 5472137757906723311, guid: ced67c8b429c4430ca1bff5f83cec31a, type: 3}
-  slotCount: 23
+  slotCount: 24
   itemPrefabs:
   - {fileID: 7023288591640270627, guid: 4f905864486164b9b9dcb340a9d03b24, type: 3}
   - {fileID: 913107315960146170, guid: 3d64149e69c3a446eabd60f15f0265f0, type: 3}
