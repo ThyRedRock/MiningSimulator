@@ -18,6 +18,8 @@ public class Move : MonoBehaviour
 
     public bool OnGround;
 
+    public bool isOnGround;
+
     void Start()
     {
        rb = GetComponent<Rigidbody2D>();
