@@ -1045,7 +1045,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.004843235, y: 0.11004269}
+  m_Offset: {x: 0.004843235, y: 0.5425266}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1055,7 +1055,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.83793354, y: 0.041903257}
+  m_Size: {x: 0.83793354, y: 0.9068716}
   m_EdgeRadius: 0
 --- !u!4 &732106572
 Transform:
@@ -2558,7 +2558,7 @@ MonoBehaviour:
   crouchHeight: 0.5
   player: {fileID: 1369177798}
   headCheck: {fileID: 1984932286}
-  headCheckLength: 1.21
+  headCheckLength: 1.25
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -2601,9 +2601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e0d3e55b2a8467d8c1c6431704ae12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  rb: {fileID: 1369177797}
   JumpForce: 6.5
+  rb: {fileID: 1369177797}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -3904,7 +3903,7 @@ GameObject:
   - component: {fileID: 1891781782}
   - component: {fileID: 1891781781}
   m_Layer: 0
-  m_Name: Circle (1)
+  m_Name: stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3974,7 +3973,7 @@ Transform:
   m_GameObject: {fileID: 1891781780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.022, y: 1.13, z: 0}
+  m_LocalPosition: {x: 14.61, y: -3.35, z: 0}
   m_LocalScale: {x: 1.2931, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4132,8 +4131,8 @@ Transform:
   m_GameObject: {fileID: 2054122785}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.062, y: 3.35, z: 0}
-  m_LocalScale: {x: 0.3375, y: 2.6169333, z: 1}
+  m_LocalPosition: {x: 1.062, y: 3.3022, z: 0}
+  m_LocalScale: {x: 0.3375, y: 2.5125177, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 838209301}

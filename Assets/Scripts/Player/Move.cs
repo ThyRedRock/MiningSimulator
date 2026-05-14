@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-
+    [Header("Player")]
+    float moveSpeed = 5f;
+    public float JumpForce = 10f;
     public Rigidbody2D rb;
 
     private Vector2 movement;
 
     private float moveX;
 
-    public float JumpForce = 10f;
-
+    [Header("Ground")]
     public LayerMask GroundLayer;
-
     public BoxCollider2D GroundCollider;
-
     public bool OnGround;
+
 
     void Start()
     {
@@ -33,6 +32,7 @@ public class Move : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
             OnGround = false; 
         } 
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
