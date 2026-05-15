@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class MinableScript : MonoBehaviour
 {
-    public GameObject itemPrefab;
+    public GameObject[] objectsToSpawn; // Array of prefabs
+    public int minAmount = 2;
+    public int maxAmount = 7;
     public int Health = 100;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,7 +20,7 @@ public class MinableScript : MonoBehaviour
 	    if (Health <= 0)
         {
             Destroy(gameObject); 
-            Instantiate(itemPrefab, gameObject.transform.position, gameObject.transform.rotation);
+            SpawnDrops(UnityEngine.Random.Range(minAmount, maxAmount + 1));
         }
 	
     }
@@ -28,5 +30,20 @@ public class MinableScript : MonoBehaviour
     {
         Debug.Log(gameObject.name + " was clicked!");
         Health -= 10;
+    }
+
+    
+
+    void SpawnDrops(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Vector3 MoveAmount = new Vector3 (UnityEngine.Random.Range(-1.5f, 1.5f), 0f,0f);
+            Vector3 SlightMove = MoveAmount + gameObject.transform.position;
+            // Random object from array
+            GameObject prefab = objectsToSpawn[UnityEngine.Random.Range(0, objectsToSpawn.Length)];
+            Instantiate(prefab, SlightMove, gameObject.transform.rotation);
+            Debug.Log(amount);
+        }
     }
 }
