@@ -107,6 +107,8 @@ MonoBehaviour:
   playerInRange: 0
   CanPickup: 0
   Intsystem: {fileID: 1522044675948742179, guid: 5777d2577323749908f2c594b8115798, type: 3}
+  invmanager: {fileID: 0}
+  Itemininv: {fileID: 7023288591640270627, guid: 4f905864486164b9b9dcb340a9d03b24, type: 3}
 --- !u!61 &7944222900925391326
 BoxCollider2D:
   m_ObjectHideFlags: 0

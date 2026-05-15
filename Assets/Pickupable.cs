@@ -10,11 +10,12 @@ public class Pickupable : MonoBehaviour
     float time;
 
     public GameObject invmanager;
+    public GameObject Itemininv;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        invmanager = GameObject.Find("GameController");
     }
 
     // Update is called once per frame
@@ -32,6 +33,7 @@ public class Pickupable : MonoBehaviour
             //if player is close enough to see the interact button
             if (playerInRange == true && CanPickup == true)
             {
+                invmanager.GetComponent<InventoryController>().AddItemtoInv(Itemininv);
                 Destroy(gameObject);
                 Debug.Log("Pick up +1");
             }	
@@ -45,10 +47,18 @@ public class Pickupable : MonoBehaviour
     void OnTriggerStay2D(Collider2D Other)
     {
         GameObject triggeringObject = Other.gameObject;
-        if (triggeringObject.CompareTag("Player"))
+        if (invmanager.GetComponent<InventoryController>().EmptySlots.Count > 0)
         {
-            CanPickup = true;
+            if (triggeringObject.CompareTag("Player"))
+            {
+                CanPickup = true;
+            } 
         }
+        else   
+        {
+            Debug.Log("inv full");
+        }
+
     }
     void OnTriggerExit2D()
     {
