@@ -9,14 +9,15 @@ public class Crouch : MonoBehaviour
 
     public Transform headCheck;
     public float headCheckLength;
-    public LayerMask GroundLayer;
 
+    LayerMask GroundLayer;
     private Vector2 normalHeight;
     private float yInput;
 
 
     public void Start()
     {
+        GroundLayer = player.GroundLayer;
         normalHeight = transform.localScale;
     }
 
@@ -29,12 +30,12 @@ public class Crouch : MonoBehaviour
         if((yInput < 0 || isHeadHitting) && player.OnGround)
         {
             if(transform.localScale.y != crouchHeight)
-            transform.localScale = new Vector2(normalHeight.x, crouchHeight);
+            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(normalHeight.x, crouchHeight), 0.1f);
         }
         else 
         {
             if(transform.localScale.y != normalHeight.y)
-            transform.localScale = normalHeight;
+            transform.localScale = Vector2.Lerp(transform.localScale, normalHeight, 0.25f);
         }
     }
 
