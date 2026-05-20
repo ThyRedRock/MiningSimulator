@@ -27,7 +27,7 @@ public class Move : MonoBehaviour
         //moves left and right
         moveX = Input.GetAxisRaw("Horizontal");
 
-        if(Input.GetKeyDown(KeyCode.Space) && OnGround)
+        if((Input.GetKeyDown(KeyCode.Space) && OnGround|| (Input.GetKeyDown(KeyCode.UpArrow)) && OnGround|| (Input.GetKeyDown(KeyCode.W)) && OnGround))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
             OnGround = false; 
