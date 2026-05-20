@@ -4,7 +4,7 @@ public class InteractSystem : MonoBehaviour
 {
     public bool playerInRange;
     public bool CanInteract;
-    public GameObject Intsystem;
+    [SerializeField] GameObject Intsystem;
 
     // Update is called once per frame
     void Update()

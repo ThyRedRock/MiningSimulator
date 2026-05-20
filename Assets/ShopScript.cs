@@ -5,6 +5,8 @@ public class ShopScript : MonoBehaviour
 {
     public InteractSystem MyIntSys;
 
+    [SerializeField] Shopinput shopUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,9 +16,13 @@ public class ShopScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MyIntSys.CanInteract == true && MyIntSys.playerInRange == true && Input.GetKeyDown(KeyCode.E))
+        if (MyIntSys.CanInteract == true && MyIntSys.playerInRange == true)
         {
-            Debug.Log("Open shop");
+            shopUI.CanOpenS = true;
+        }
+        else
+        {
+            shopUI.CanOpenS = false;
         }
     }
 }

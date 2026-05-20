@@ -4,9 +4,9 @@ using UnityEngine;
 public class MinableScript : MonoBehaviour
 {
     public GameObject[] objectsToSpawn; // Array of prefabs
-    public int minAmount = 2;
-    public int maxAmount = 7;
-    public int Health = 100;
+    [SerializeField] int minAmount = 2;
+    [SerializeField] int maxAmount = 7;
+    [SerializeField] int Health = 100;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

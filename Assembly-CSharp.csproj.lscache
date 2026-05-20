@@ -53,6 +53,7 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 Assets/
  GameManager.cs
  InteractSystem.cs
+ MenuInput.cs
  Pickupable.cs
  Player/
   Move.cs
@@ -68,6 +69,7 @@ Assets/
    MenuController.cs
    StartMenuController.cs
    TabController.cs
+ Shopinput.cs
  ShopScript.cs
  TextMesh Pro/Examples & Extras/Scripts/
   Benchmark01.cs
