@@ -31,6 +31,7 @@ public class Crouch : MonoBehaviour
         if((yInput < 0 || isHeadHitting) && player.OnGround)
         {
             isCrouching = true;
+            Debug.Log("Player is crouching");
             
             if(transform.localScale.y != crouchHeight)
             transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(normalHeight.x, crouchHeight), 0.1f);
@@ -44,6 +45,7 @@ public class Crouch : MonoBehaviour
         if(yInput >= 0)
         {
             isCrouching = false;
+            Debug.Log("Player isn't crouching");
         }
     }
 

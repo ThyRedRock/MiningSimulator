@@ -21,13 +21,13 @@ public class Torch_Light : MonoBehaviour
     void Update()
     {
         playerLocation = player.transform.position;
-        transform.position = new Vector3(playerLocation.x + x, playerLocation.y + y, playerLocation.z);
+        transform.position = new Vector3(playerLocation.x + x, playerLocation.y + y, playerLocation.z); //Makes torch follow player
 
-        if(crouch.isCrouching == true)
+        if(crouch.isCrouching == true) //if crouching then set y to crouchDistance
         {
             y = crouchDistance;
         }
-        else if(crouch.isCrouching == false)
+        else if(crouch.isCrouching == false) //if not crouching then set y to normal
         {
             y = 1.2f;
         }
