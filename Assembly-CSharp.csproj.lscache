@@ -53,6 +53,7 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 Assets/
  GameManager.cs
  InteractSystem.cs
+ MaterialInfoScript.cs
  MenuInput.cs
  Pickupable.cs
  Player/
