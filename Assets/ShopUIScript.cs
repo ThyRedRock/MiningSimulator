@@ -26,15 +26,6 @@ public class ShopUIScript : MonoBehaviour
 
     void OnDisable()
     {
-        Transform itemCContainer = Content.transform.Find("MaterialSellInfo(Clone)");
-
-        if (itemCContainer != null)
-        {
-            foreach (Transform gameObject in itemCContainer)
-            {
-                Debug.Log(gameObject.name);
-            }
-        }
-
+        Content.GetComponent<ContentScript>().DeleteChildren();
     }
 }
