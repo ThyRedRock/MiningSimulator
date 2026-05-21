@@ -3,7 +3,6 @@ using UnityEngine;
 public class Shopinput : MonoBehaviour
 {
     MenuController menuC;
-
     public bool CanOpenS;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

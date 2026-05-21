@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShopScript : MonoBehaviour
 {
     public InteractSystem MyIntSys;
-
     [SerializeField] Shopinput shopUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

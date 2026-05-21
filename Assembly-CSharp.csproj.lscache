@@ -72,6 +72,7 @@ Assets/
    TabController.cs
  Shopinput.cs
  ShopScript.cs
+ ShopUIScript.cs
  TextMesh Pro/Examples & Extras/Scripts/
   Benchmark01.cs
   Benchmark01_UGUI.cs

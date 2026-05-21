@@ -1,6 +1,9 @@
 using UnityEngine;
+using System;
 using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class InventoryController : MonoBehaviour
 {
@@ -37,28 +40,40 @@ public class InventoryController : MonoBehaviour
     public void Sortinv()
     {
         //Function goes traverses Filled Slots list and find pairs each unique item with a Count value
-
-        counts.Clear(); // Reset the count before starting
-        
-        foreach (GameObject obj in FilledSlots)
+        // Reset the count before starting
+        if(FilledSlots.Count > 0)
         {
-            if (obj.GetComponent<Slot>().currentItem == null) continue; // Skip missing/empty slots
+            counts.Clear();
 
-            if (counts.ContainsKey(obj.GetComponent<Slot>().currentItem))
+            foreach (GameObject obj in FilledSlots)
             {
-                counts[obj.GetComponent<Slot>().currentItem] += 1; // Add 1 to the existing count
-            }
-            else
-            {
-                counts[obj.GetComponent<Slot>().currentItem] = 1; // First time seeing this item
+                if (obj.GetComponent<Slot>().currentItem == null) continue; // Skip missing/empty slots
+
+                if (counts.ContainsKey(obj.GetComponent<Slot>().currentItem))
+                {
+                    counts[obj.GetComponent<Slot>().currentItem] += 1; // If item in invetory is already recorded does this
+                }
+                else
+                {
+                    counts[obj.GetComponent<Slot>().currentItem] = 1; // Recorded item 
+                }
             }
         }
 
-        // 4. Print the final counts to the Unity Console
-        foreach (KeyValuePair<GameObject, int> pair in counts)
+    }
+    public void SpawnMatInfo()
+    {
+        if(FilledSlots.Count > 0)
         {
-            Debug.Log("Item: " + pair.Key.name + " | Total: " + pair.Value);
-            Instantiate(MatInfo, SliderContent);
+            foreach (KeyValuePair<GameObject, int> pair in counts)
+            {
+                Debug.Log("Item: " + pair.Key.name + " | Total: " + pair.Value);
+                GameObject Material = Instantiate(MatInfo, SliderContent);
+                Material.GetComponent<MaterialInfoScript>().Amount =  +pair.Value;
+                Material.GetComponent<MaterialInfoScript>().Name = pair.Key.name;
+                Material.transform.Find("MatIcon").gameObject.GetComponent<Image>().sprite = pair.Key.transform.Find("ItemC").gameObject.GetComponent<Image>().sprite;
+            }
         }
+ 
     }
 }
