@@ -8,6 +8,8 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     Transform originalParent;
     CanvasGroup canvasGroup;
 
+    Slot storedSlot;
+
     public GameObject gameC;
 
     void Start()
@@ -43,35 +45,39 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if(dropItem != null)
             {
                 dropSlot = dropItem.GetComponentInParent<Slot>();
-                Debug.Log(dropSlot);
             }
         }
         Slot originalSlot = originalParent.GetComponent<Slot>();
-        Debug.Log(originalSlot);
 
-        if(dropSlot != null)
+        if (originalParent != null)
         {
-            if (dropSlot.currentItem != null)
-            {
-                //Is a slot under drop point
-                dropSlot.currentItem.transform.SetParent(originalSlot.transform);
-                originalSlot.currentItem = dropSlot.currentItem;
-                dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                
-            }
-            else
-            {
-                originalSlot.currentItem = null;
-                gameC.GetComponent<InventoryController>().EmptySlots.Add(originalParent.gameObject);
-                Debug.Log("Added");
-            }
-
-            //move item into drop slot
-            transform.SetParent(dropSlot.transform);
-            dropSlot.currentItem = gameObject;
-            Debug.Log("Dropped");
-            gameC.GetComponent<InventoryController>().EmptySlots.Remove(Dobject);
+            storedSlot = originalParent.GetComponent<Slot>();
         }
+        
+        
+    if (dropSlot != null)
+    {
+        GameObject draggedItem = storedSlot.currentItem;
+
+        if (dropSlot.currentItem != null)
+        {
+            // Swap items
+            dropSlot.currentItem.transform.SetParent(originalSlot.transform);
+            originalSlot.currentItem = dropSlot.currentItem;
+            dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        }
+        else
+        {
+            originalSlot.currentItem = null;
+            gameC.GetComponent<InventoryController>().EmptySlots.Add(originalParent.gameObject); 
+            gameC.GetComponent<InventoryController>().FilledSlots.Remove(originalParent.gameObject);
+        }
+        gameC.GetComponent<InventoryController>().EmptySlots.Remove(Dobject); 
+        gameC.GetComponent<InventoryController>().FilledSlots.Add(Dobject);
+        // Move dragged item into new slot
+        transform.SetParent(dropSlot.transform);
+        dropSlot.currentItem = draggedItem;
+    }
         else
         {
             //no slot under drop point 
@@ -79,8 +85,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
 
         GetComponent<RectTransform>().anchoredPosition = Vector2.zero; //center
-
-
     }
 
 }

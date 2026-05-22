@@ -44,6 +44,7 @@ public class InventoryController : MonoBehaviour
         if(FilledSlots.Count > 0)
         {
             counts.Clear();
+            Debug.Log("Sort");
 
             foreach (GameObject obj in FilledSlots)
             {
@@ -67,9 +68,8 @@ public class InventoryController : MonoBehaviour
         {
             foreach (KeyValuePair<GameObject, int> pair in counts)
             {
-                Debug.Log("Item: " + pair.Key.name + " | Total: " + pair.Value);
                 GameObject Material = Instantiate(MatInfo, SliderContent);
-                Material.GetComponent<MaterialInfoScript>().Amount =  +pair.Value;
+                Material.GetComponent<MaterialInfoScript>().Amount =+ pair.Value;
                 Material.GetComponent<MaterialInfoScript>().Name = pair.Key.name;
                 Material.transform.Find("MatIcon").gameObject.GetComponent<Image>().sprite = pair.Key.transform.Find("ItemC").gameObject.GetComponent<Image>().sprite;
             }

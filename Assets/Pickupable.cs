@@ -35,7 +35,6 @@ public class Pickupable : MonoBehaviour
             {
                 invmanager.GetComponent<InventoryController>().AddItemtoInv(Itemininv);
                 Destroy(gameObject);
-                Debug.Log("Pick up +1");
             }
 
         }
