@@ -17,7 +17,6 @@ public class InventoryController : MonoBehaviour
     private Dictionary<GameObject, int> counts = new Dictionary<GameObject, int>();
     public GameObject MatInfo;
     public Transform SliderContent;
-    public GameObject[] itemPrefabs;
 
     void Start()
     {

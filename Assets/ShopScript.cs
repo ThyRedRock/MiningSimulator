@@ -13,6 +13,7 @@ public class ShopScript : MonoBehaviour
     public List<GameObject> Selectedsell;
     [SerializeField] TMP_Text SellSelectedText;
     [SerializeField] TMP_Text SellAllText;
+    [SerializeField] TMP_Text MoneyText;
     int SellSelectedvalue;
     int SellAllvalue;
 
@@ -29,6 +30,7 @@ public class ShopScript : MonoBehaviour
     {
         SellSelectedText.text = "$" + SellSelectedvalue + "";
         SellAllText.text = "$" + SellAllvalue + "";
+        MoneyText.text = "$" + Money + "";
 
         if (MyIntSys.CanInteract == true && MyIntSys.playerInRange == true)
         {
@@ -71,6 +73,17 @@ public class ShopScript : MonoBehaviour
                 {
                     SellSelectedvalue =+ SellSelectedvalue + selected.GetComponent<MaterialInfoScript>().Amount * 40;
                 }
+                if (selected.GetComponent<MaterialInfoScript>().Name == "Raw Iron")
+                {
+                    //replace one with how much each is worth
+                    SellSelectedvalue =+ SellSelectedvalue + selected.GetComponent<MaterialInfoScript>().Amount * 20;
+                }
+
+                if (selected.GetComponent<MaterialInfoScript>().Name == "Shiny Raw Iron")
+                {
+                    //replace one with how much each is worth
+                    SellSelectedvalue =+ SellSelectedvalue + selected.GetComponent<MaterialInfoScript>().Amount * 160;
+                }
             }
             else
             {
@@ -97,10 +110,15 @@ public class ShopScript : MonoBehaviour
                 {
                     SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 40;
                 }
-                if (Mat.GetComponent<MaterialInfoScript>().Name == "Insert new mat name here")
+                if (Mat.GetComponent<MaterialInfoScript>().Name == "Raw Iron")
                 {
                     //replace one with how much each is worth
-                    SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 1;
+                    SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 20;
+                }
+                if (Mat.GetComponent<MaterialInfoScript>().Name == "Shiny Raw Iron")
+                {
+                    //replace one with how much each is worth
+                    SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 160;
                 }
             }
             else
@@ -139,5 +157,6 @@ public class ShopScript : MonoBehaviour
             Invc.GetComponent<InventoryController>().RemoveSpeficFilledSlots(Sel.GetComponent<MaterialInfoScript>().Name);
         }
         Selectedsell.Clear();
+        CountSellSelectedValue();
     }
 }
