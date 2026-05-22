@@ -605,10 +605,10 @@ RectTransform:
   - {fileID: 1116099553}
   m_Father: {fileID: 1727020824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 459.6, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &418885333
 GameObject:
@@ -1091,7 +1091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &625139147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1923,6 +1923,7 @@ MonoBehaviour:
   slotCount: 24
   EmptySlots: []
   FilledSlots: []
+  MatinfoList: []
   MatInfo: {fileID: 1149369209595595430, guid: caae5f887e9414184a04a7476a136915, type: 3}
   SliderContent: {fileID: 1008662978}
   itemPrefabs: []
@@ -2170,8 +2171,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   MyIntSys: {fileID: 963275564}
+  Invc: {fileID: 904817177}
   shopUI: {fileID: 1832335066}
   Selectedsell: []
+  SellSelectedText: {fileID: 2112147571}
+  SellAllText: {fileID: 1569553311}
+  Money: 0
 --- !u!61 &963275563
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3553,10 +3558,10 @@ RectTransform:
   - {fileID: 418885334}
   m_Father: {fileID: 1727020824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.3, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1470673899
 MonoBehaviour:
@@ -3652,7 +3657,7 @@ GameObject:
   - component: {fileID: 1569553312}
   - component: {fileID: 1569553311}
   m_Layer: 5
-  m_Name: SellAmountText
+  m_Name: SellAllAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4382,7 +4387,7 @@ RectTransform:
   m_Father: {fileID: 217066536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4767,6 +4772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096886986e38d4f25ba62df8e219179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shopinput
+  shopobj: {fileID: 963275559}
   CanOpenS: 0
 --- !u!114 &1832335067
 MonoBehaviour:
@@ -4793,7 +4799,7 @@ GameObject:
   - component: {fileID: 1863124716}
   - component: {fileID: 1863124715}
   m_Layer: 5
-  m_Name: SellAmontText
+  m_Name: Text(TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5559,7 +5565,7 @@ GameObject:
   - component: {fileID: 2112147572}
   - component: {fileID: 2112147571}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SellSelectedAmontText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5791,7 +5797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2129295783
 RectTransform:
   m_ObjectHideFlags: 0

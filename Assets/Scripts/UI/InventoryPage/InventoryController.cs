@@ -13,6 +13,7 @@ public class InventoryController : MonoBehaviour
 
     public List<GameObject> EmptySlots;
     public List<GameObject> FilledSlots;
+    public List<GameObject> MatinfoList;
     private Dictionary<GameObject, int> counts = new Dictionary<GameObject, int>();
     public GameObject MatInfo;
     public Transform SliderContent;
@@ -71,6 +72,7 @@ public class InventoryController : MonoBehaviour
                 GameObject Material = Instantiate(MatInfo, SliderContent);
                 Material.GetComponent<MaterialInfoScript>().Amount =+ pair.Value;
                 Material.GetComponent<MaterialInfoScript>().Name = pair.Key.name;
+                MatinfoList.Add(Material);
                 Material.transform.Find("MatIcon").gameObject.GetComponent<Image>().sprite = pair.Key.transform.Find("ItemC").gameObject.GetComponent<Image>().sprite;
             }
         }
