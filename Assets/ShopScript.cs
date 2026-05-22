@@ -97,6 +97,11 @@ public class ShopScript : MonoBehaviour
                 {
                     SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 40;
                 }
+                if (Mat.GetComponent<MaterialInfoScript>().Name == "Insert new mat name here")
+                {
+                    //replace one with how much each is worth
+                    SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 1;
+                }
             }
             else
             {
@@ -108,17 +113,31 @@ public class ShopScript : MonoBehaviour
 
     public void SellAll()
     {
-        Money = Money + SellAllvalue;
-        Invc.GetComponent<InventoryController>().MatinfoList.Clear();
-        Selectedsell.Clear();
+        if(Invc.GetComponent<InventoryController>().MatinfoList.Count > 0)
+        {
+            Money = Money + SellAllvalue;
+            Invc.GetComponent<InventoryController>().RemoveAllFilledSlots();
+            Selectedsell.Clear();
+
+            foreach(GameObject sellthis in Invc.GetComponent<InventoryController>().MatinfoList)
+            {
+                    if (sellthis != null)
+                    {
+                        Destroy(sellthis);
+                    }
+            }
+            Invc.GetComponent<InventoryController>().MatinfoList.Clear();
+        }
+
     }
     public void SellSelected()
     {
         Money = Money + SellSelectedvalue;
-
         foreach(GameObject Sel in Selectedsell)
         {
             Destroy(Sel);
+            Invc.GetComponent<InventoryController>().RemoveSpeficFilledSlots(Sel.GetComponent<MaterialInfoScript>().Name);
         }
+        Selectedsell.Clear();
     }
 }

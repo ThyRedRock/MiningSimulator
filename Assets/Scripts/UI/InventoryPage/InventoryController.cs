@@ -76,6 +76,59 @@ public class InventoryController : MonoBehaviour
                 Material.transform.Find("MatIcon").gameObject.GetComponent<Image>().sprite = pair.Key.transform.Find("ItemC").gameObject.GetComponent<Image>().sprite;
             }
         }
- 
+    }
+    public void RemoveAllFilledSlots()
+    {
+
+        if (FilledSlots.Count > 0)
+        {
+            foreach (GameObject filled in FilledSlots)
+            {
+                if (filled != null)
+                {
+                    // Clear the item inside the slot
+                    filled.GetComponent<Slot>().currentItem = null;
+                    
+                    for (int i = filled.transform.childCount - 1; i >= 0; i--)
+                    {
+                        Destroy(filled.transform.GetChild(i).gameObject);
+                    }
+                }
+            }
+
+            // Move all the slots over to the EmptySlots list at once
+            EmptySlots.AddRange(FilledSlots);
+
+            // wipe the FilledSlots list after the loop is finished
+            FilledSlots.Clear(); 
+        }
+    }
+    public void RemoveSpeficFilledSlots(string Objecttoremove)
+    {
+        
+        for (int i = FilledSlots.Count - 1; i >= 0; i--)
+        {
+            GameObject filled = FilledSlots[i];
+
+            if (filled != null)
+            {
+                // Make sure your Slot component actually has a 'myName' variable holding the item name
+                if (filled.GetComponent<Slot>().currentItem != null && filled.GetComponent<Slot>().currentItem.name == Objecttoremove)
+                {
+                    // Clear the data inside the slot
+                    filled.GetComponent<Slot>().currentItem = null;
+
+                    // Destroy visual icon child objects if they exist
+                    if (filled.transform.childCount > 0)
+                    {
+                        Destroy(filled.transform.GetChild(0).gameObject);
+                    }
+
+                    //  Move ONLY this specific slot from filled to empty
+                    EmptySlots.Add(filled);
+                    FilledSlots.RemoveAt(i); 
+                }
+            }
+        }
     }
 }
