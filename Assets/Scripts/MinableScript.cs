@@ -28,7 +28,6 @@ public class MinableScript : MonoBehaviour
     // Detects when the mouse clicks on this object's collider
     private void OnMouseDown()                
     {
-        Debug.Log(gameObject.name + " was clicked!");
         Health -= 10;
     }
 
@@ -43,7 +42,6 @@ public class MinableScript : MonoBehaviour
             
             GameObject prefab = objectsToSpawn[UnityEngine.Random.Range(0, objectsToSpawn.Length)];
             Instantiate(prefab, SlightMove, gameObject.transform.rotation);
-            Debug.Log(amount);
         }
     }
 }
