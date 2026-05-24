@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class MinableScript : MonoBehaviour
 {
-    public GameObject[] objectsToSpawn; // Array of prefabs
+    //All of the item this object can drop
+    public GameObject[] objectsToSpawn;
+
+    //Min and max amount of item it should spawn
     [SerializeField] int minAmount = 2;
     [SerializeField] int maxAmount = 7;
-    [SerializeField] int Health = 100;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //Objects health
+    [SerializeField] int Health;
+
     void Start()
     {
         
@@ -20,19 +24,21 @@ public class MinableScript : MonoBehaviour
 	    if (Health <= 0)
         {
             Destroy(gameObject); 
+            //Spawns a random amount of drops based on min and max
             SpawnDrops(UnityEngine.Random.Range(minAmount, maxAmount + 1));
         }
 	
     }
 
-    // Detects when the mouse clicks on this object's collider
+    //Detects when the mouse clicks on this object's collider
     private void OnMouseDown()                
     {
+        SpriteRenderer Sprite = gameObject.GetComponent<SpriteRenderer>();
         Health -= 10;
     }
 
     
-
+    //Spawns drops when object is deleted
     void SpawnDrops(int amount)
     {
         for (int i = 0; i < amount; i++)
