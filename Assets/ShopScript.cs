@@ -10,14 +10,20 @@ public class ShopScript : MonoBehaviour
     public InteractSystem MyIntSys;
     [SerializeField] GameObject Invc;
     [SerializeField] Shopinput shopUI;
+
     public List<GameObject> Selectedsell;
     [SerializeField] TMP_Text SellSelectedText;
     [SerializeField] TMP_Text SellAllText;
-    [SerializeField] TMP_Text MoneyText;
+
     int SellSelectedvalue;
     int SellAllvalue;
 
+    [SerializeField] TMP_Text MoneyText;
     public int Money;
+
+    public int pixcost;
+
+    [SerializeField] TMP_Text pxicostText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +36,7 @@ public class ShopScript : MonoBehaviour
     {
         SellSelectedText.text = "$" + SellSelectedvalue + "";
         SellAllText.text = "$" + SellAllvalue + "";
-        MoneyText.text = "$" + Money + "";
+        pxicostText.text = "Cost: " + pixcost + "";
 
         if (MyIntSys.CanInteract == true && MyIntSys.playerInRange == true)
         {
@@ -84,6 +90,18 @@ public class ShopScript : MonoBehaviour
                     //replace one with how much each is worth
                     SellSelectedvalue =+ SellSelectedvalue + selected.GetComponent<MaterialInfoScript>().Amount * 160;
                 }
+
+                if (selected.GetComponent<MaterialInfoScript>().Name == "Amethyst Piece")
+                {
+                    //replace one with how much each is worth
+                    SellSelectedvalue =+ SellSelectedvalue + selected.GetComponent<MaterialInfoScript>().Amount * 80;
+                }
+
+                if (selected.GetComponent<MaterialInfoScript>().Name == "Shiny Amethyst Piece")
+                {
+                    //replace one with how much each is worth
+                    SellSelectedvalue =+ SellSelectedvalue + selected.GetComponent<MaterialInfoScript>().Amount * 400;
+                }
             }
             else
             {
@@ -119,6 +137,18 @@ public class ShopScript : MonoBehaviour
                 {
                     //replace one with how much each is worth
                     SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 160;
+                }
+
+                if (Mat.GetComponent<MaterialInfoScript>().Name == "Amethyst Piece")
+                {
+                    //replace one with how much each is worth
+                    SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 80;
+                }
+
+                if (Mat.GetComponent<MaterialInfoScript>().Name == "Shiny Amethyst Piece")
+                {
+                    //replace one with how much each is worth
+                    SellAllvalue =+ SellAllvalue + Mat.GetComponent<MaterialInfoScript>().Amount * 400;
                 }
             }
             else
@@ -158,5 +188,14 @@ public class ShopScript : MonoBehaviour
         }
         Selectedsell.Clear();
         CountSellSelectedValue();
+    }
+
+    public void BuyPicUpgrage()
+    {
+        if (pixcost <= Money)
+        {
+            Invc.GetComponent<GameManager>().PixPower += 10;
+            Money -= pixcost;
+        }
     }
 }

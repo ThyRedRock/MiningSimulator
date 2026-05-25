@@ -12,10 +12,16 @@ public class MinableScript : MonoBehaviour
 
     //Objects health
     [SerializeField] int Health;
+    bool changecolor;
+
+    [SerializeField] GameObject GameC;
+
+    float time;
+    float delay = 0.1f;
 
     void Start()
     {
-        
+       GameC = GameObject.Find("GameController");
     }
 
     // Update is called once per frame
@@ -27,14 +33,26 @@ public class MinableScript : MonoBehaviour
             //Spawns a random amount of drops based on min and max
             SpawnDrops(UnityEngine.Random.Range(minAmount, maxAmount + 1));
         }
-	
+
+        if (changecolor == true)
+        {
+            time = time + Time.deltaTime;
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(229, 40, 40, 255);
+            if (time > delay)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+                changecolor = false;
+                time = 0f;
+            }
+        }
     }
 
     //Detects when the mouse clicks on this object's collider
     private void OnMouseDown()                
     {
-        SpriteRenderer Sprite = gameObject.GetComponent<SpriteRenderer>();
-        Health -= 10;
+        //Changes the color of the sprite to red for a same amount of time
+        changecolor = true;
+        Health -= GameC.GetComponent<GameManager>().PixPower;
     }
 
     
