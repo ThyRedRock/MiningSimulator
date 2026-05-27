@@ -51,8 +51,10 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 
 [sourceFiles]
 Assets/
+ ContentScript.cs
  GameManager.cs
  InteractSystem.cs
+ MaterialInfoScript.cs
  MenuInput.cs
  Pickupable.cs
  Player/
@@ -71,6 +73,7 @@ Assets/
    TabController.cs
  Shopinput.cs
  ShopScript.cs
+ ShopUIScript.cs
  TextMesh Pro/Examples & Extras/Scripts/
   Benchmark01.cs
   Benchmark01_UGUI.cs

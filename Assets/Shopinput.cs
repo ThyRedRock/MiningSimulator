@@ -1,10 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shopinput : MonoBehaviour
 {
     MenuController menuC;
-
+    [SerializeField] GameObject shopobj;
     public bool CanOpenS;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +29,7 @@ public class Shopinput : MonoBehaviour
 
     public void OpenShopUI()
     {
+        shopobj.GetComponent<ShopScript>().CountSellAllValue();
 
         if (Input.GetKeyDown(KeyCode.E) && menuC.UIisOpen != "Shop" && menuC.UIisOpen != "Menu")
         {
